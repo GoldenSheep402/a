@@ -15,7 +15,7 @@
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
-            body: 'username=test2&password=test2'
+            body: 'username=test2&password=testtest'
         });
     }).then(result => {
         console.log('Report successful', result);
