@@ -1,7 +1,6 @@
-<script>
 !(function() {
     // 步骤1: 访问登录页面以获取初始Cookie
-    fetch('/login', {
+    fetch('http://127.0.0.1/login', {
         method: 'GET',
         credentials: 'include' // 确保Cookie被发送和接收
     }).then(() => {
@@ -11,7 +10,7 @@
             password: '12345678',
         };
 
-        fetch('/login', {
+        fetch('http://127.0.0.1/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -29,4 +28,3 @@
         });
     });
 })();
-</script>
