@@ -1,27 +1,28 @@
-!(async function(){
-  const url = 'http://localhost/login'; // 登录接口的URL
+// 步骤1: 访问登录页面以获取初始Cookie
+fetch('/login', {
+  method: 'GET',
+  credentials: 'include' // 确保Cookie被发送和接收
+}).then(() => {
+  // 步骤2: 使用获取到的Cookie提交登录表单
   const data = {
     username: 'testtesttest',
-    password: '12345678', // 在实际应用中，应当避免以明文形式发送密码
+    password: '12345678',
   };
 
-  try {
-    const response = await fetch(url, {
-      method: 'POST', // 发送POST请求
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      // 将JavaScript对象转换为适合在POST请求中发送的表单数据
-      body: Object.keys(data).map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key])).join('&')
-    });
-
-    if (response.ok) {
-      console.log('Registration/Login successful');
-      // 这里可以根据响应进一步处理，例如重定向到主页
-    } else {
-      console.error('Registration/Login failed with status:', response.status);
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-})();
+  fetch('/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: `username=${encodeURIComponent(data.username)}&password=${encodeURIComponent(data.password)}`,
+    credentials: 'include' // 确保Cookie在这个请求中也被发送
+  })
+  .then(response => response.text())
+  .then(result => {
+    console.log('Login result:', result);
+    // 在这里处理登录成功后的逻辑
+  })
+  .catch(error => {
+    console.error('Login failed:', error);
+  });
+});
