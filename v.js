@@ -27,4 +27,5 @@
             console.error('Login failed:', error);
         });
     });
+     alert("hello");
 })();
