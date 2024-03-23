@@ -1,15 +1,15 @@
 // 步骤1: 访问登录页面以获取初始Cookie
-fetch('http://106.15.207.13:32542/login', {
+fetch('http://127.0.0.1:80/login', {
   method: 'GET',
   credentials: 'include' // 确保Cookie被发送和接收
 }).then(() => {
   // 步骤2: 使用获取到的Cookie提交登录表单
   const data = {
-    username: '100864',
+    username: 'abcdef',
     password: '12345678',
   };
 
-  fetch('http://106.15.207.13:32542/login', {
+  fetch('http://127.0.0.1:80/login', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
