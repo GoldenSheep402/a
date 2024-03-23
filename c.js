@@ -5,7 +5,7 @@ fetch('/login', {
 }).then(() => {
   // 步骤2: 使用获取到的Cookie提交登录表单
   const data = {
-    username: 'testtesttest2',
+    username: '10086',
     password: '12345678',
   };
 
